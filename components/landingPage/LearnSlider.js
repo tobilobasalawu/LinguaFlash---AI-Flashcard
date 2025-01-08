@@ -6,7 +6,7 @@ import Marquee from "react-fast-marquee";
 export default function LearnSlider() {
     return (
         <section className="overflow-hidden">
-            <Marquee speed={150}>
+            <Marquee speed={60}>
                 <div className="flex gap-12 lg:gap-20 px-5 md:px-10 py-2 md:p-3">
                     {learnSlider.map((data) => {
                         return (
