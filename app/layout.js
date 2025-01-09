@@ -31,7 +31,7 @@ const caramel = Caramel({
 
 export default function RootLayout({ children }) {
   const pathname = usePathname()
-  const canShowFooter = pathname !== "/sign-in" && pathname !== "/sign-up"
+  const canShowFooter = !pathname.includes("/sign-in") && !pathname.includes("/sign-up");
 
   return (
     <ClerkProvider appearance={appearance}>
