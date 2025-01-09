@@ -17,4 +17,4 @@ export default [
     image: "/images/team/victoria.jpg",
     linkedInProfile: "https://www.linkedin.com/in/victoriaoyelola/",
   },
-]
+];

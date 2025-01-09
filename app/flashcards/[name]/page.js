@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useAuth } from "@clerk/nextjs"
-import { collection, getDocs } from "firebase/firestore"
-import { db } from "@/firebase"
-import { useParams } from "next/navigation"
-import Header from "@/components/Header"
+import { useState, useEffect } from "react";
+import { useAuth } from "@clerk/nextjs";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebase";
+import { useParams } from "next/navigation";
+import Header from "@/components/Header";
 import {
   Grid,
   Card,
@@ -13,42 +13,42 @@ import {
   CardContent,
   Box,
   CircularProgress,
-} from "@mui/material"
+} from "@mui/material";
 
 export default function FlashcardSet() {
-  const { name } = useParams()
-  const { userId } = useAuth()
-  const [flashcardSet, setFlashcardSet] = useState(undefined)
-  const [flipped, setFlipped] = useState([])
+  const { name } = useParams();
+  const { userId } = useAuth();
+  const [flashcardSet, setFlashcardSet] = useState(undefined);
+  const [flipped, setFlipped] = useState([]);
 
   useEffect(() => {
     async function fetchFlashcardSet() {
-      if (!userId || !name) return
+      if (!userId || !name) return;
 
-      const flashcardsCollectionRef = collection(db, "users", userId, name)
+      const flashcardsCollectionRef = collection(db, "users", userId, name);
       try {
-        const querySnapshot = await getDocs(flashcardsCollectionRef)
+        const querySnapshot = await getDocs(flashcardsCollectionRef);
         const flashcards = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
-        }))
-        setFlashcardSet(flashcards)
-        setFlipped(new Array(flashcards.length).fill(false))
+        }));
+        setFlashcardSet(flashcards);
+        setFlipped(new Array(flashcards.length).fill(false));
       } catch (error) {
-        alert("Error fetching flashcards:", error)
-        setFlashcardSet([])
+        alert("Error fetching flashcards:", error);
+        setFlashcardSet([]);
       }
     }
-    fetchFlashcardSet()
-  }, [userId, name])
+    fetchFlashcardSet();
+  }, [userId, name]);
 
   const handleCardClick = (index) => {
     setFlipped((prev) => {
-      const newFlipped = [...prev]
-      newFlipped[index] = !newFlipped[index]
-      return newFlipped
-    })
-  }
+      const newFlipped = [...prev];
+      newFlipped[index] = !newFlipped[index];
+      return newFlipped;
+    });
+  };
 
   return (
     <div className="flex flex-col min-h-svh">
@@ -56,8 +56,7 @@ export default function FlashcardSet() {
       <main
         className={`flex-1 flex flex-col ${
           !flashcardSet || flashcardSet.length === 0 ? "justify-center" : ""
-        } items-center gap-5 md:gap-7 px-5 md:px-10 py-20 pt-[113px] lg:pt-[129px] pb-20`}
-      >
+        } items-center gap-5 md:gap-7 px-5 md:px-10 py-20 pt-[113px] lg:pt-[129px] pb-20`}>
         {!flashcardSet ? (
           <CircularProgress size={40} />
         ) : flashcardSet && flashcardSet.length === 0 ? (
@@ -71,16 +70,14 @@ export default function FlashcardSet() {
             </h1>
             <Grid
               container
-              spacing={2}
-            >
+              spacing={2}>
               {flashcardSet.map((flashcard, index) => (
                 <Grid
                   item
                   xs={12}
                   sm={6}
                   md={4}
-                  key={index}
-                >
+                  key={index}>
                   <Card sx={{ background: "transparent" }}>
                     <CardActionArea onClick={() => handleCardClick(index)}>
                       <CardContent sx={{ padding: "0px" }}>
@@ -89,8 +86,7 @@ export default function FlashcardSet() {
                             perspective: "1000px",
                             width: "100%",
                             height: "220px",
-                          }}
-                        >
+                          }}>
                           <Box
                             sx={{
                               transition: "transform 0.8s",
@@ -101,8 +97,7 @@ export default function FlashcardSet() {
                               transform: flipped[index]
                                 ? "rotateY(180deg)"
                                 : "rotateY(0deg)",
-                            }}
-                          >
+                            }}>
                             <Box
                               sx={{
                                 position: "absolute",
@@ -121,8 +116,7 @@ export default function FlashcardSet() {
                                   md: "24px",
                                 },
                                 padding: { xs: "20px", md: "40px" },
-                              }}
-                            >
+                              }}>
                               <h3 className="font-dela-gothic-one text-xl lg:text-2xl !leading-none tracking-normal pb-2 text-black text-center">
                                 {flashcard.front}
                               </h3>
@@ -146,8 +140,7 @@ export default function FlashcardSet() {
                                   md: "24px",
                                 },
                                 padding: { xs: "20px", md: "40px" },
-                              }}
-                            >
+                              }}>
                               <h3 className="font-dela-gothic-one text-xl lg:text-2xl !leading-none tracking-normal pb-2 text-black text-center">
                                 {flashcard.back}
                               </h3>
@@ -164,5 +157,5 @@ export default function FlashcardSet() {
         )}
       </main>
     </div>
-  )
+  );
 }

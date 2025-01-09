@@ -20,17 +20,20 @@ LinguaFlash AI Flashcard is an innovative language learning application that lev
 To get started with LinguaFlash AI Flashcard, follow these steps:
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/tobilobasalawu/linguaflash-ai-flashcard.git
    ```
 
 2. Install dependencies:
+
    ```bash
    cd linguaflash-ai-flashcard
    npm install
    ```
 
 3. Run the development server:
+
    ```bash
    npm run dev
    ```
@@ -45,7 +48,6 @@ To get started with LinguaFlash AI Flashcard, follow these steps:
 - [Tailwind CSS](https://tailwindcss.com/)
 - [OpenAI API](https://openai.com/api/)
 
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -54,7 +56,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions, feel free to reach out:
 
-- **Email:**  oyelolaabimbola23@gmail.com, anushka.narsima@gmail.com, tobisal.dev@gmail.com
+- **Email:** oyelolaabimbola23@gmail.com, anushka.narsima@gmail.com, tobisal.dev@gmail.com
 
 ---
 

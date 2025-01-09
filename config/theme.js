@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { createTheme } from "@mui/material"
-import { Manrope } from "next/font/google"
+import { createTheme } from "@mui/material";
+import { Manrope } from "next/font/google";
 const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
-})
+});
 
 export const themeOverride = createTheme({
   typography: {
@@ -36,4 +36,4 @@ export const themeOverride = createTheme({
       color: "#F1F1F1",
     },
   },
-})
+});

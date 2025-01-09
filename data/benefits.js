@@ -1,4 +1,4 @@
-import illustrations from "./illustrations"
+import illustrations from "./illustrations";
 
 export default [
   {
@@ -19,4 +19,4 @@ export default [
       " Learn high-frequency words and phrases most commonly used in everyday conversations and essential for language fluency.",
     illustration: illustrations[2].vocabulary_focus,
   },
-]
+];

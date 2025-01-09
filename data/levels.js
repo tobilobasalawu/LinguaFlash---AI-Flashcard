@@ -28,4 +28,4 @@ export default [
     heading: "C2 (Proficiency)",
     description: "Learners at the C2 level have mastered the language. ",
   },
-]
+];

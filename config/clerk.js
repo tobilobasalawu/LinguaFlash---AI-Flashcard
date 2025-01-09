@@ -35,4 +35,4 @@ export const appearance = {
     },
     footer: "bg-[#111111]",
   },
-}
+};

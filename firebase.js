@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: "linguaflash-ai-flashcard.appspot.com",
   messagingSenderId: "955079957668",
   appId: "1:955079957668:web:9edcf929cff4b45733da31",
-  measurementId: "G-GFHX52H3TH"
+  measurementId: "G-GFHX52H3TH",
 };
 
 // Initialize Firebase

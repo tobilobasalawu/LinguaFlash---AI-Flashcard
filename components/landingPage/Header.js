@@ -1,18 +1,18 @@
-"use client"
-import Image from "next/image"
-import Link from "next/link"
-import { useState } from "react"
-import { useContext } from "react"
-import { AppContext } from "@/contexts/Appcontext"
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "@/contexts/Appcontext";
 
 export default function Header() {
-  const [isMobileNavMenuOpen, setIsMobileNavMenuOpen] = useState(false)
-  const { viewport } = useContext(AppContext)
-  const canShowNav = isMobileNavMenuOpen || viewport.isPc
+  const [isMobileNavMenuOpen, setIsMobileNavMenuOpen] = useState(false);
+  const { viewport } = useContext(AppContext);
+  const canShowNav = isMobileNavMenuOpen || viewport.isPc;
 
   function toggleMobileNavMenuVisibility() {
-    if (viewport.isPc) return
-    setIsMobileNavMenuOpen((prevValue) => !prevValue)
+    if (viewport.isPc) return;
+    setIsMobileNavMenuOpen((prevValue) => !prevValue);
   }
   return (
     <header className="fixed w-full max-w-[1536px] bg-black z-[999] flex justify-between items-center gap-5 px-5 md:px-10 py-3 lg:py-5 border-b border-dark-gray">
@@ -35,16 +35,14 @@ export default function Header() {
             <li className="hover:bg-pink/40 lg:hover:bg-transparent lg:hover:border-b lg:hover:border-pink pb-[2px]">
               <Link
                 href="./#levels"
-                className="block w-full h-fit p-3 py-4 lg:w-fit lg:p-0 font-manrope text-base text-white font-medium leading-none"
-              >
+                className="block w-full h-fit p-3 py-4 lg:w-fit lg:p-0 font-manrope text-base text-white font-medium leading-none">
                 Levels
               </Link>
             </li>
             <li className="hover:bg-pink/40 lg:hover:bg-transparent lg:hover:border-b lg:hover:border-pink pb-[2px]">
               <Link
                 href="./#team"
-                className="block w-full h-fit p-3 py-4 lg:w-fit lg:p-0 font-manrope text-base text-white font-medium leading-none border-t border-blue lg:border-t-0"
-              >
+                className="block w-full h-fit p-3 py-4 lg:w-fit lg:p-0 font-manrope text-base text-white font-medium leading-none border-t border-blue lg:border-t-0">
                 Team
               </Link>
             </li>{" "}
@@ -52,8 +50,7 @@ export default function Header() {
               <Link
                 href="https://buymeacoffee.com/oyelolaabij"
                 target="_blank"
-                className="block w-full h-fit p-3 py-4 lg:w-fit lg:p-0 font-manrope text-base text-white font-medium leading-none border-t border-blue lg:border-t-0"
-              >
+                className="block w-full h-fit p-3 py-4 lg:w-fit lg:p-0 font-manrope text-base text-white font-medium leading-none border-t border-blue lg:border-t-0">
                 Support
               </Link>
             </li>
@@ -63,8 +60,7 @@ export default function Header() {
 
       <Link
         href="/new"
-        className="font-manrope font-bold -tracking-[.02em] text-base !leading-none text-white border border-pink rounded-lg py-2 px-4 lg:py-[12px] lg:px-6 ml-auto lg:ml-0"
-      >
+        className="font-manrope font-bold -tracking-[.02em] text-base !leading-none text-white border border-pink rounded-lg py-2 px-4 lg:py-[12px] lg:px-6 ml-auto lg:ml-0">
         Get started
       </Link>
 
@@ -72,12 +68,11 @@ export default function Header() {
         type="button"
         className="flex flex-col gap-[5px] lg:hidden"
         onClick={toggleMobileNavMenuVisibility}
-        aria-label="Navigation menu button"
-      >
+        aria-label="Navigation menu button">
         <span className="w-5 h-[3px] bg-off-white rounded"></span>
         <span className="w-5 h-[3px] bg-off-white rounded"></span>
         <span className="w-5 h-[3px] bg-off-white rounded"></span>
       </button>
     </header>
-  )
+  );
 }

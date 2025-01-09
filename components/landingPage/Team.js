@@ -1,24 +1,22 @@
-import team from "@/data/team"
-import Image from "next/image"
-import Link from "next/link"
+import team from "@/data/team";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Team() {
   return (
     <section
       id="team"
-      className="flex flex-col justify-center items-center px-5 md:px-10 py-20 gap-10"
-    >
+      className="flex flex-col justify-center items-center px-5 md:px-10 py-20 gap-10">
       <h2 className="w-full max-w-[400px] md:max-w-[912px] font-dela-gothic-one text-4xl lg:text-5xl md:text-center !leading-none tracking-normal pb-2 text-transparent bg-primary bg-clip-text">
         Meet the amazing team
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-auto gap-10 w-full max-w-[400px] md:max-w-[912px]">
         {team.map((member) => {
-          const { name, jobTitle, image, linkedInProfile } = member
+          const { name, jobTitle, image, linkedInProfile } = member;
           return (
             <div
               key={name}
-              className="flex flex-col gap-3 lg:gap-5"
-            >
+              className="flex flex-col gap-3 lg:gap-5">
               <div className="flex-none relative w-full h-[280px] md:h-[240px]">
                 <Image
                   className="rounded-2xl lg:rounded-3xl object-cover object-center"
@@ -28,8 +26,7 @@ export default function Team() {
                 />
                 <Link
                   href={linkedInProfile}
-                  target="_blank"
-                >
+                  target="_blank">
                   <svg
                     className="absolute right-5 top-5 hover:fill-[#0072B1]"
                     aria-label={`Link to ${name}'s LinkedIn profile`}
@@ -37,8 +34,7 @@ export default function Team() {
                     height="32"
                     viewBox="0 0 25 25"
                     fill="010101"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                    xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_9_3834)">
                       <path
                         fillRule="evenodd"
@@ -69,9 +65,9 @@ export default function Team() {
                 </p>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </section>
-  )
+  );
 }

@@ -44,4 +44,4 @@ export default [
     flagName: "Flag of Turkiye",
     text: "Türkçe öğren",
   },
-]
+];

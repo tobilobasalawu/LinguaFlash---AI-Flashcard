@@ -6,8 +6,7 @@ export default [
         height="250"
         viewBox="0 0 238 250"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -84,8 +83,7 @@ export default [
         height="225"
         viewBox="0 0 284 225"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_18_318)">
           <path
             fillRule="evenodd"
@@ -175,8 +173,7 @@ export default [
         height="251"
         viewBox="0 0 290 251"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -228,4 +225,4 @@ export default [
       </svg>
     ),
   },
-]
+];

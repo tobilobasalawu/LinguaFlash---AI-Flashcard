@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useAuth, useUser } from "@clerk/nextjs"
+import { useState, useEffect } from "react";
+import { useAuth, useUser } from "@clerk/nextjs";
 import {
   doc,
   collection,
@@ -9,72 +9,76 @@ import {
   setDoc,
   writeBatch,
   onSnapshot,
-} from "firebase/firestore"
-import { TextField, CircularProgress } from "@mui/material"
-import { db } from "@/firebase"
-import Header from "@/components/Header"
-import Link from "next/link"
+} from "firebase/firestore";
+import { TextField, CircularProgress } from "@mui/material";
+import { db } from "@/firebase";
+import Header from "@/components/Header";
+import Link from "next/link";
 
 export default function Flashcard() {
-  const { user } = useUser()
-  const { userId } = useAuth()
-  const [flashcards, setFlashcards] = useState(undefined)
-  const [searchTerm, setSearchTerm] = useState("")
-  const name = userId && (user.firstName || user.lastName)
+  const { user } = useUser();
+  const { userId } = useAuth();
+  const [flashcards, setFlashcards] = useState(undefined);
+  const [searchTerm, setSearchTerm] = useState("");
+  const name = userId && (user.firstName || user.lastName);
 
   useEffect(() => {
-    if (!userId) return
+    if (!userId) return;
 
-    const docRef = doc(collection(db, "users"), userId)
+    const docRef = doc(collection(db, "users"), userId);
 
     const unsubscribe = onSnapshot(
       docRef,
       (docSnap) => {
         if (docSnap.exists()) {
-          const collections = docSnap.data().flashcards || []
-          setFlashcards(collections)
+          const collections = docSnap.data().flashcards || [];
+          setFlashcards(collections);
         } else {
-          setDoc(docRef, { flashcards: [] })
-          setFlashcards([])
+          setDoc(docRef, { flashcards: [] });
+          setFlashcards([]);
         }
       },
       (error) => {
-        alert("Error fetching flashcards:", error)
-        setFlashcards([])
-      }
-    )
+        alert("Error fetching flashcards:", error);
+        setFlashcards([]);
+      },
+    );
 
-    return () => unsubscribe()
-  }, [userId])
+    return () => unsubscribe();
+  }, [userId]);
 
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value)
-  }
+    setSearchTerm(event.target.value);
+  };
 
   const filteredFlashcards = flashcards
     ? flashcards.filter((flashcard) =>
-        flashcard.name.toLowerCase().includes(searchTerm.toLowerCase())
+        flashcard.name.toLowerCase().includes(searchTerm.toLowerCase()),
       )
-    : undefined
+    : undefined;
 
   async function deleteFlashcards(name) {
-    const batch = writeBatch(db)
-    const userDocRef = doc(collection(db, "users"), user.id)
-    const docSnap = await getDoc(userDocRef)
+    const batch = writeBatch(db);
+    const userDocRef = doc(collection(db, "users"), user.id);
+    const docSnap = await getDoc(userDocRef);
 
     if (docSnap.exists()) {
-      const collections = docSnap.data().flashcards || []
-      const updatedCollections = collections.filter((f) => f.name !== name)
+      const collections = docSnap.data().flashcards || [];
+      const updatedCollections = collections.filter((f) => f.name !== name);
 
       if (collections.length === updatedCollections.length) {
-        alert("Unable to delete collection, please try again later.")
-        return
+        alert("Unable to delete collection, please try again later.");
+        return;
       }
 
-      batch.set(userDocRef, { flashcards: updatedCollections }, { merge: true })
-      await batch.commit()
+      batch.set(
+        userDocRef,
+        { flashcards: updatedCollections },
+        { merge: true },
+      );
+      await batch.commit();
     } else {
-      alert("Unable to delete collection, please try again later.")
+      alert("Unable to delete collection, please try again later.");
     }
   }
 
@@ -84,8 +88,7 @@ export default function Flashcard() {
       <main
         className={`flex-1 flex flex-col ${
           !flashcards ? "justify-center" : ""
-        } items-center gap-5 md:gap-7 px-5 md:px-10 py-20  pt-[113px] lg:pt-[129px] pb-20`}
-      >
+        } items-center gap-5 md:gap-7 px-5 md:px-10 py-20  pt-[113px] lg:pt-[129px] pb-20`}>
         {!flashcards ? (
           <CircularProgress size={40} />
         ) : (
@@ -142,8 +145,7 @@ export default function Flashcard() {
 
                 <Link
                   className="w-fit font-manrope font-bold -tracking-[.02em] text-lg lg:text-xl !leading-none text-black bg-pink-gradient rounded-2xl py-3 px-6 lg:py-4 lg:px-8 hover:bg-none hover:bg-fuchsia-400"
-                  href="/new"
-                >
+                  href="/new">
                   New +
                 </Link>
               </div>
@@ -152,20 +154,17 @@ export default function Flashcard() {
                 {filteredFlashcards.map((flashcard, index) => (
                   <div
                     className="group relative w-full flex-grow md:flex-grow-0 md:w-[300px] lg:w-[390px] h-[240px]"
-                    key={index}
-                  >
+                    key={index}>
                     <button
                       className="absolute right-5 top-5 z-20"
-                      onClick={() => deleteFlashcards(flashcard.name)}
-                    >
+                      onClick={() => deleteFlashcards(flashcard.name)}>
                       <svg
                         className="hidden group-hover:block hover:fill-red-700"
                         xmlns="http://www.w3.org/2000/svg"
                         width="32"
                         height="32"
                         viewBox="0 0 24 24"
-                        fill="#010101"
-                      >
+                        fill="#010101">
                         <path
                           fillRule="evenodd"
                           d="m6.774 6.4l.812 13.648a.8.8 0 0 0 .798.752h7.232a.8.8 0 0 0 .798-.752L17.226 6.4h1.203l-.817 13.719A2 2 0 0 1 15.616 22H8.384a2 2 0 0 1-1.996-1.881L5.571 6.4zM9.5 9h1.2l.5 9H10zm3.8 0h1.2l-.5 9h-1.2zM4.459 2.353l15.757 2.778a.5.5 0 0 1 .406.58L20.5 6.4L3.758 3.448l.122-.69a.5.5 0 0 1 .579-.405m6.29-1.125l3.94.695a.5.5 0 0 1 .406.58l-.122.689l-4.924-.869l.122-.689a.5.5 0 0 1 .579-.406z"
@@ -194,5 +193,5 @@ export default function Flashcard() {
         )}
       </main>
     </div>
-  )
+  );
 }

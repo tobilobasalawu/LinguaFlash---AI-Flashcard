@@ -1,6 +1,6 @@
-"use client"
-import Image from "next/image"
-import Link from "next/link"
+"use client";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -27,8 +27,7 @@ export default function Footer() {
         <Link
           href="https://buymeacoffee.com/oyelolaabij"
           target="_blank"
-          className="font-manrope text-base text-white font-medium leading-none hover:border-b border-pink hover:border-blue pb-[2px]"
-        >
+          className="font-manrope text-base text-white font-medium leading-none hover:border-b border-pink hover:border-blue pb-[2px]">
           Support us
         </Link>
       </div>
@@ -37,5 +36,5 @@ export default function Footer() {
         © Copyright 2024. All Rights Reserved.
       </p>
     </footer>
-  )
+  );
 }
