@@ -24,7 +24,7 @@ import {
 import { useRouter } from "next/navigation";
 import languages from "../../data/languages.json";
 import { doc, collection, writeBatch, getDoc } from "firebase/firestore";
-import { db } from "@/firebase";
+import { db } from "@/config/firebase";
 import Header from "@/components/Header";
 import Link from "next/link";
 
@@ -105,7 +105,7 @@ export default function Generate() {
       const collections = docSnap.data().flashcards || [];
       if (collections.find((f) => f.name === sanitizedName)) {
         alert(
-          "A collection with that name already exists. Please enter a different name.",
+          "A collection with that name already exists. Please enter a different name."
         );
         return;
       } else {
@@ -480,7 +480,7 @@ export default function Generate() {
                       onChange={(e) => {
                         const value = e.target.value.replace(
                           /[^a-zA-Z0-9\s-]/g,
-                          "",
+                          ""
                         );
                         setName(value);
                       }}

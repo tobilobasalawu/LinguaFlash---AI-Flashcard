@@ -11,7 +11,7 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { TextField, CircularProgress } from "@mui/material";
-import { db } from "@/firebase";
+import { db } from "@/config/firebase";
 import Header from "@/components/Header";
 import Link from "next/link";
 
@@ -41,7 +41,7 @@ export default function Flashcard() {
       (error) => {
         alert("Error fetching flashcards:", error);
         setFlashcards([]);
-      },
+      }
     );
 
     return () => unsubscribe();
@@ -53,7 +53,7 @@ export default function Flashcard() {
 
   const filteredFlashcards = flashcards
     ? flashcards.filter((flashcard) =>
-        flashcard.name.toLowerCase().includes(searchTerm.toLowerCase()),
+        flashcard.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : undefined;
 
@@ -74,7 +74,7 @@ export default function Flashcard() {
       batch.set(
         userDocRef,
         { flashcards: updatedCollections },
-        { merge: true },
+        { merge: true }
       );
       await batch.commit();
     } else {
