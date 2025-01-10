@@ -2,5 +2,6 @@
   "tabWidth": 2,
   "bracketSameLine": true,
   "semi": true,
-  "singleAttributePerLine": true
+  "singleAttributePerLine": true,
+  "trailingComma": "es5"
 }
