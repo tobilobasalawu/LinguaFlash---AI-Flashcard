@@ -15,11 +15,13 @@
     "@google/generative-ai": "^0.17.0",
     "@mui/material": "^5.16.7",
     "firebase": "^10.12.5",
+    "firebase-admin": "^13.0.2",
     "next": "^14.2.23",
     "openai": "^4.55.7",
     "react": "^18",
     "react-dom": "^18",
-    "react-fast-marquee": "^1.6.5"
+    "react-fast-marquee": "^1.6.5",
+    "svix": "^1.45.1"
   },
   "devDependencies": {
     "eslint": "^8",
