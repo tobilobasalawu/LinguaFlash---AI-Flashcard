@@ -30,7 +30,7 @@ export const themeOverride = createTheme({
   },
   root: {
     "& .MuiInputLabel-root": {
-      color: "#A385FF", // Color of the label text
+      color: "#A385FF",
     },
     "& .MuiInputBase-input": {
       color: "#F1F1F1",

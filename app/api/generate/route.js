@@ -22,17 +22,17 @@ export async function POST(req) {
   if (!process.env.OPENAI_API_KEY) {
     return NextResponse.json(
       { error: "OpenAI API key is not set" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  const data = await req.json(); // Use .json() for JSON payload
+  const data = await req.json();
   const { text, language, difficulty } = data;
   const userData = `Target language - ${language}
   Current level - ${difficulty}
   Additional Info - ${text}`;
-  // We'll implement the OpenAI API call here
+
   const completion = await openai.chat.completions.create({
     messages: [
       { role: "system", content: systemPrompt },
@@ -42,9 +42,7 @@ export async function POST(req) {
     response_format: { type: "json_object" },
   });
 
-  // Parse the JSON response from the OpenAI API
   const flashcards = JSON.parse(completion.choices[0].message.content);
 
-  // Return the flashcards as a JSON response
   return NextResponse.json(flashcards.flashcards);
 }
