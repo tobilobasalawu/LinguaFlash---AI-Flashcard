@@ -192,4 +192,48 @@ html {
   }
 }
 
+/* CLERK STYLES */
+.clerk-btns {
+  @apply font-manrope -tracking-[.02em] text-off-white !leading-none !border-none shadow-none rounded-xl lg:rounded-2xl outline-none transition-colors duration-100;
+}
+
+.clerk-btns:hover {
+  color: #d668aa;
+}
+
+.clerk-btns[data-localization-key="formButtonPrimary"],
+[data-localization-key="userProfile.formButtonPrimary__add"] {
+  @apply p-3 text-sm lg:text-base font-bold bg-pink-gradient hover:bg-none hover:bg-fuchsia-400 text-black hover:text-black;
+}
+
+.clerk-btns[data-color="danger"] {
+  @apply p-3 px-6 bg-[#ff000020] text-white hover:bg-[#9f0712];
+}
+
+.clerk-btns[data-variant="solid"][data-color="danger"] {
+  @apply bg-[#9f0712];
+}
+
+.clerk-btns svg,
+.clerk-btns path {
+  @apply fill-blue;
+}
+
+.modalCloseButton svg,
+.modalCloseButton path {
+  @apply fill-off-white;
+}
+
+.clerk-social-btns {
+  @apply text-black hover:text-black font-bold bg-off-white hover:bg-gray-300;
+}
+
+.clerk-auth-input[data-variant="default"] {
+  @apply pt-3 pb-3 border outline-none border-dark-gray rounded-xl lg:rounded-2xl focus:border-blue;
+}
+
+.clerk-badges {
+  @apply bg-[#d668aa10] text-[#d668aa];
+}
+
 @tailwind utilities;
